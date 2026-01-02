@@ -50,9 +50,9 @@ java -XX:+UseZGC -Xmx256m -Xlog:gc*:file=gc-zgc.log MemoryLabApp
 
 | GC Type | Total GC Events | Longest Pause | Throughput |
 |---------|-----------------|---------------|------------|
-| Serial  |                 |               |            |
-| G1GC    |                 |               |            |
-| ZGC     |                 |               |            |
+| Serial  |        6        | 26.155ms      |99.8%       |
+| G1GC    |       19        | 3.447ms       |99.86%      |
+| ZGC     |       16        | 10ms          |99.59%      |
 
 ### Task 4: Tune for Low Latency
 Configure G1GC to target a maximum pause time of 100ms:
@@ -62,8 +62,8 @@ java -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -Xmx256m MemoryLabApp
 ```
 
 **Questions**:
-1. Did G1GC achieve the target pause time?
-2. What trade-offs did you observe?
+1. Did G1GC achieve the target pause time? it can
+2. What trade-offs did you observe? You get low latency, but higher CPU usage and sometimes more frequent GC cycles. 
 
 ## Deliverables
 1. Completed `MemoryLabApp.java`
